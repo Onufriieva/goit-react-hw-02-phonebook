@@ -1,7 +1,8 @@
 import { Component } from "react";
+import { nanoid } from 'nanoid';
 import Form from "./form/Form";
 import Contacts from "./contacts/Contacts";
-import { nanoid } from 'nanoid';
+import Filter from "./filter/Filter";
 
 
 export class App extends Component {
@@ -11,7 +12,9 @@ export class App extends Component {
     {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
-    name: ''
+    name: '',
+    filter: '',
+    number: ''
   }
 
 
@@ -31,7 +34,6 @@ export class App extends Component {
 
   }
 
-
   handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -49,9 +51,20 @@ export class App extends Component {
     });
   };
 
+  serchingFilter = (e) => {
+    this.setState({ filter: e.currentTarget.value });
+  }  
+  
+  contactFiltering = () => { 
+    const { filter, contacts } = this.state;
+    const normalizeFilter = filter.toLowerCase();
+    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
+  }
 
   
   render() {
+const filter = this.contactFiltering();
+
     return (
       <div
         style={{
@@ -70,8 +83,11 @@ export class App extends Component {
        <Form 
        onSubmit={this.handleSubmit}/>
        <Contacts
-       contacts={this.state.contacts}
+       contacts={filter}
        />
+       <Filter 
+       filterValue={this.state.filter}
+       onChange={this.serchingFilter}/>
 
       </div>
     );
