@@ -1,14 +1,15 @@
 // import { Component } from "react";
 import { nanoid } from 'nanoid';
+import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
 
 const inputId = nanoid();
 
 const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
   return(
-    <div>
+    <FormBox>
       <form onSubmit={onSubmit}>
-        <label htmlFor="">Name
-          <input
+        <LabelBox htmlFor="">Name
+          <InputBox
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -18,10 +19,10 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
             value={nameValue}    
             id={inputId}          
           /> 
-        </label>
+        </LabelBox>
           
-        <label htmlFor="">Number
-          <input
+        <LabelBox htmlFor="">Number
+          <InputBox
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -31,11 +32,11 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
             value={numberValue}  
             id={inputId}            
           />  
-        </label>
+        </LabelBox>
       
-        <button type="submit">Add contact</button>
+        <ButtonAdd type="submit">Add contact</ButtonAdd>
       </form>
-    </div>  
+    </FormBox>  
   )
 }
 

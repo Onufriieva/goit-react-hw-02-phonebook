@@ -1,10 +1,10 @@
-
+import { LabelBox, InputBox } from "./FilterStyled";
 
 const Filter = ({filterValue, onChange}) => {
     return(
-        <label htmlFor="">
+        <LabelBox htmlFor="">
           Find contacts by name
-          <input 
+          <InputBox 
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -14,7 +14,7 @@ const Filter = ({filterValue, onChange}) => {
            name="filter" 
           value={filterValue}
            onChange={onChange} />
-        </label>
+        </LabelBox>
     )
 }
 

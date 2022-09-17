@@ -1,13 +1,22 @@
+import PropTypes from 'prop-types';
+import { ListContacts } from './ContactsStyled';
+
 const Contacts = ({contacts}) => {
   return (
-    <ul>
+    <ListContacts>
       {contacts.map(contact => 
         <li key={contact.id}>
           {contact.name}: {contact.number}
         </li>)
       }    
-    </ul>
+    </ListContacts>
   )   
 }
 
 export default Contacts;
+
+Contacts.propTypes = {
+  ul: PropTypes.string,
+  li: PropTypes.string,
+  contacts: PropTypes.array.isRequired,
+  };

@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { nanoid } from 'nanoid';
-import Form from "./form/Form";
-import Contacts from "./contacts/Contacts";
-import Filter from "./filter/Filter";
+import Form from "../form/Form";
+import Contacts from "../contacts/Contacts";
+import Filter from "../filter/Filter";
+import { DivBox, TitleBox, SecondaryTitleBox } from "./AppStyled";
 
 
 export class App extends Component {
@@ -66,22 +67,15 @@ export class App extends Component {
 const filter = this.contactFiltering();
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101'
-        }}
-      >
-   
-       <h1>Phonebook</h1>
+      <DivBox>
+         
+       <TitleBox>Phonebook</TitleBox>
 
        <Form 
        onSubmit={this.handleSubmit}/>
+
+       <SecondaryTitleBox>Contacts</SecondaryTitleBox>
+
        <Contacts
        contacts={filter}
        />
@@ -89,7 +83,8 @@ const filter = this.contactFiltering();
        filterValue={this.state.filter}
        onChange={this.serchingFilter}/>
 
-      </div>
+      </DivBox>
     );
   };
 }
+
