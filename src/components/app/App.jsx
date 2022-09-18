@@ -62,9 +62,15 @@ export class App extends Component {
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
   }
 
+  removeContact = (id) => {
+    const { contacts } = this.state;
+    contacts.splice(id, 1);
+    this.setState({contacts});
+  }
+
   
   render() {
-const filter = this.contactFiltering();
+    const filter = this.contactFiltering();
 
     return (
       <DivBox>
@@ -78,6 +84,7 @@ const filter = this.contactFiltering();
 
        <Contacts
        contacts={filter}
+       onClick={this.removeContact}
        />
        <Filter 
        filterValue={this.state.filter}
