@@ -18,7 +18,7 @@ const Contacts = ({contacts, onClick}) => {
 export default Contacts;
 
 Contacts.propTypes = {
-  ul: PropTypes.string,
+  ListContacts: PropTypes.string,
   li: PropTypes.string,
   contacts: PropTypes.array.isRequired,
   };
