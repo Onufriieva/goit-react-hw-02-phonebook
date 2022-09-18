@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
 
 const inputId = nanoid();
@@ -40,3 +41,10 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
 }
 
 export default Form;
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+  nameValue: PropTypes.string,
+  numberValue: PropTypes.number,
+};
