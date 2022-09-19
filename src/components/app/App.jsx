@@ -4,7 +4,6 @@ import Form from "../form/Form";
 import Contacts from "../contacts/Contacts";
 import Filter from "../filter/Filter";
 import { DivBox, TitleBox, SecondaryTitleBox } from "./AppStyled";
-import contacts from "components/contacts";
 
 
 export class App extends Component {
@@ -52,7 +51,7 @@ export class App extends Component {
   //     };
   //   });
   // };
-  
+
 
   handleSubmit = e => {
     e.preventDefault();
