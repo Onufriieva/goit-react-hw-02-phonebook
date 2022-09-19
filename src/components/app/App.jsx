@@ -4,6 +4,7 @@ import Form from "../form/Form";
 import Contacts from "../contacts/Contacts";
 import Filter from "../filter/Filter";
 import { DivBox, TitleBox, SecondaryTitleBox } from "./AppStyled";
+import contacts from "components/contacts";
 
 
 export class App extends Component {
@@ -35,14 +36,32 @@ export class App extends Component {
 
   }
 
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+  //   this.setState(prevState => {
+  //     const newContact = {
+  //       id: nanoid(),
+  //       name: form.elements.name.value,
+  //       number: form.elements.number.value,
+  //     };
+  //     return {
+  //       contacts: [newContact, ...prevState.contacts],
+  //       name: '',
+  //       number: '',
+  //     };
+  //   });
+  // };
+  
+
   handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     this.setState(prevState => {
       const newContact = {
         id: nanoid(),
-        name: form.elements.name.value,
-        number: form.elements.number.value,
+        name: form.name.value,
+        number: form.number.value,
       };
       return {
         contacts: [newContact, ...prevState.contacts],
@@ -51,6 +70,7 @@ export class App extends Component {
       };
     });
   };
+
 
   serchingFilter = (e) => {
     this.setState({ filter: e.currentTarget.value });
@@ -62,10 +82,10 @@ export class App extends Component {
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
   }
 
-  removeContact = (id) => {
-    const { contacts } = this.state;
-    contacts.splice(id, 1);
-    this.setState({contacts});
+  removeContact = (contactId) => {  
+    this.setState(prevState => ({   
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }))
   }
 
   
@@ -78,7 +98,11 @@ export class App extends Component {
        <TitleBox>Phonebook</TitleBox>
 
        <Form 
-       onSubmit={this.handleSubmit}/>
+       onSubmit={this.handleSubmit}
+       onChange={this.handleInputChange}
+       nameValue={this.state.name}
+       numberValue={this.state.number}
+       />
 
        <SecondaryTitleBox>Contacts</SecondaryTitleBox>
 

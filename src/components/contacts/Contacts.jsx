@@ -4,10 +4,10 @@ import { ListContacts, ButtonDel } from './ContactsStyled';
 const Contacts = ({contacts, onClick}) => {
   return (
     <ListContacts>
-      {contacts.map(contact => 
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <ButtonDel type='button' onClick={onClick}>Delete</ButtonDel> 
+      {contacts.map(({ id, name, number }) => 
+        <li key={id}>
+          {name}: {number}
+          <ButtonDel type='button' onClick={() => onClick(id)}>Delete</ButtonDel> 
         </li>)
       }   
      
@@ -15,8 +15,10 @@ const Contacts = ({contacts, onClick}) => {
   )   
 }
 
+
 export default Contacts;
 
 Contacts.propTypes = {
   contacts: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
   };

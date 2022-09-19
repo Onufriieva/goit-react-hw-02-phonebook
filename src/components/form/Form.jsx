@@ -46,5 +46,5 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func,
   nameValue: PropTypes.string,
-  numberValue: PropTypes.number,
+  numberValue: PropTypes.string,
 };
