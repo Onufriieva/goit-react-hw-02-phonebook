@@ -11,7 +11,7 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
   return(
     <FormBox>
       <form onSubmit={onSubmit}>
-        <LabelBox htmlFor={nameInputId}>Name
+        <LabelBox>Name
           <InputBox
             type="text"
             name="name"
@@ -24,7 +24,7 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
           /> 
         </LabelBox>
           
-        <LabelBox htmlFor={numberInputId}>Number
+        <LabelBox>Number
           <InputBox
             type="tel"
             name="number"
