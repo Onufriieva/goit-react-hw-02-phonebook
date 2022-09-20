@@ -35,32 +35,15 @@ export class App extends Component {
 
   }
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget;
-  //   this.setState(prevState => {
-  //     const newContact = {
-  //       id: nanoid(),
-  //       name: form.elements.name.value,
-  //       number: form.elements.number.value,
-  //     };
-  //     return {
-  //       contacts: [newContact, ...prevState.contacts],
-  //       name: '',
-  //       number: '',
-  //     };
-  //   });
-  // };
-
 
   handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
+    this.chekingContacts();
     this.setState(prevState => {
       const newContact = {
         id: nanoid(),
-        name: form.name.value,
-        number: form.number.value,
+        name: this.state.name,
+        number: this.state.number,
       };
       return {
         contacts: [newContact, ...prevState.contacts],
@@ -87,6 +70,15 @@ export class App extends Component {
     }))
   }
 
+
+  chekingContacts = () => {
+    const { contacts, name } = this.state; 
+    const findContact = contacts.find((contact) => contact.name === name);
+
+    if (findContact) { 
+      alert(`${this.state.name} is already in contacts`);      
+    }                
+  };
   
   render() {
     const filter = this.contactFiltering();

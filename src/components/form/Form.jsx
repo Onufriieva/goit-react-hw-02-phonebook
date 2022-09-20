@@ -2,13 +2,16 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
 
-const inputId = nanoid();
+
+const nameInputId = nanoid(5);
+const numberInputId = nanoid(8) 
+
 
 const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
   return(
     <FormBox>
       <form onSubmit={onSubmit}>
-        <LabelBox htmlFor="">Name
+        <LabelBox htmlFor={nameInputId}>Name
           <InputBox
             type="text"
             name="name"
@@ -17,11 +20,11 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
             required
             onChange={onChange}
             value={nameValue}    
-            id={inputId}          
+            id={nameInputId}          
           /> 
         </LabelBox>
           
-        <LabelBox htmlFor="">Number
+        <LabelBox htmlFor={numberInputId}>Number
           <InputBox
             type="tel"
             name="number"
@@ -30,7 +33,7 @@ const Form = ({onSubmit, onChange, nameValue, numberValue}) => {
             required
             onChange={onChange}
             value={numberValue}  
-            id={inputId}            
+            id={numberInputId}            
           />  
         </LabelBox>
       

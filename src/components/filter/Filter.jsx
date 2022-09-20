@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Filter = ({filterValue, onChange}) => {
     return(
-        <LabelBox htmlFor="">
+        <LabelBox>
           Find contacts by name
           <InputBox 
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
